@@ -5,9 +5,8 @@ metadata:
   name: {{ .Release.Name }}-ingress
   namespace: {{ .Values.namespace }}
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: {{ .Values.ingress.className }}
 spec:
-  ingressClassName: {{ .Values.ingress.className }}
   rules:
     - host: {{ .Values.ingress.host }}
       http:
@@ -16,7 +15,7 @@ spec:
             pathType: {{ .Values.ingress.pathType }}
             backend:
               service:
-                name: {{ .Release.Name }}-userprofile-service
+                name: {{ .Release.Name }}-{{ .Values.userprofile.service.name }}
                 port:
-                  number: {{ .Values.service.port }}
+                  number: {{ .Values.userprofile.service.port }}
 {{- end }}

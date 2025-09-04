@@ -4,5 +4,6 @@ metadata:
   name: {{ .Release.Name }}-app-config
   namespace: {{ .Values.namespace }}
 data:
-  PORT: "{{ .Values.service.port }}"
-  MONGODB_DATABASE: "{{ .Values.mongodb.database }}"
+{{- range $key, $value := .Values.config }}
+  {{ $key }}: "{{ $value }}"
+{{- end }}

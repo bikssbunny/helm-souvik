@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-userprofile-service-souvik
+  name: {{ .Release.Name }}-{{ .Values.userprofile.service.name }}
   namespace: {{ .Values.namespace }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.userprofile.service.type }}
   selector:
-    app: {{ .Release.Name }}-userprofile
+    app: {{ .Release.Name }}-{{ .Values.userprofile.name }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.port }}
+    - port: {{ .Values.userprofile.service.port }}
+      targetPort: {{ .Values.userprofile.containerPort }}
       protocol: TCP
