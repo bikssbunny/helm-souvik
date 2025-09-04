@@ -3,7 +3,7 @@ namespace: souvik
 replicaCount: 2
 
 image:
-  repository: saiteja2502/userprofileretail   # replace with your image repo
+  repository: saiteja2502/userprofileretail  
   tag: latest
   pullPolicy: IfNotPresent
 
